@@ -88,6 +88,93 @@
           }
         }
       }
+    },
+    "/{user_id}":{
+      "get":{
+        "tags":["User"],
+        "summary":"List All Users Profile",
+        "description":"Route to list all users.",
+        "parameters":[{
+          "name":"user_id",
+          "in":"header",
+          "schema": { "type": "string" },
+          "description":"User ID(uuidV4) to get informations.",
+          "required":true,
+          "example":"5f1d7f83-4f85-4ab9-a66b-8c27c8e121d3"
+        }],
+        "responses":{
+          "200":{
+            "description":"[{ all_users }]",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  
+                    "items":{
+                      "type":"object",
+                      "properties":{
+                        "id": { "type":"string" },
+                        "admin": { "type":"boolean" },
+                        "name": { "type":"string" },
+                        "email": { "type":"string" },
+                        "created_at": { "type":"string" },
+                        "updated_at":{ "type":"string" }
+                      }
+                    }
+                  
+                }
+              }
+            }
+          },
+          "400":[{
+            "description":"User not exists."
+          },{
+            "description":"User is not admin."
+          }]
+        }
+      }
+    },
+    "/users/{user_id}/admin":{
+      "patch":{
+        "tags":["User"],
+        "summary":"Turn User Admin",
+        "description":"Route to turn user admin.",
+        "parameters":[{
+          "name":"user_id",
+          "in":"path",
+          "schema": { "type": "string" },
+          "description":"User ID(uuidV4). To turn specific user to admin.",
+          "required":true,
+          "example":"5f1d7f83-4f85-4ab9-a66b-8c27c8e121d3"
+        }
+      ],
+        "responses":{
+          "202":{
+            "description":"{user json}",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties":{
+                      "id": { "type":"string" },
+                      "admin": { "type":"boolean" },
+                      "name": { "type":"string" },
+                      "email": { "type":"string" },
+                      "created_at": { "type":"string" },
+                      "updated_at":{ "type":"string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404":{
+            "description":"User not exists."
+          }
+        }
+      }
     }
   }
 
