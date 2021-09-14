@@ -22,6 +22,8 @@ Run <strong>yarn test</strong> or <strong>npm run test</strong>
 <br>
 :heavy_plus_sign: To run the tests
 <br><br>
-<img align="center" src="./images/documentation.png">
+<div align="center">
+<img src="./images/documentation.png">
 <br><br>
 <img align="center" src="./images/tests.png">
+</div>
