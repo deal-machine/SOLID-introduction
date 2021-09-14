@@ -9,5 +9,86 @@
       "email":"95deal@gmail.com",
       "url":"https://github.com/deal-machine"
     }
+  },
+  "paths":{
+    "/users":{
+      "post":{
+        "tags":["User"],
+        "summary":"Create a new user",
+        "description":"Route to create a new user.",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"object",
+                "properties":{
+                  "email":{
+                    "type":"string"
+                  },
+                  "name":{
+                    "type":"string"
+                  }
+                },
+                "example":{
+                  "email":"userEmailSample@user.com",
+                  "name":"User name sample"
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"{ user object }"
+          },
+          "400":{
+            "description":"Error message."
+          }
+        }
+      }
+     
+    },
+    "/users/{user_id}":{
+      "get":{
+        "tags":["User"],
+        "summary":"Show User Profile",
+        "description":"Route to show user informations.",
+        "parameters":[{
+          "name":"user_id",
+          "in":"path",
+          "schema": { "type": "string" },
+          "description":"User ID(uuidV4) to get informations.",
+          "required":true,
+          "example":"5f1d7f83-4f85-4ab9-a66b-8c27c8e121d3"
+        }],
+        "responses":{
+          "200":{
+            "description":"{user json}",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties":{
+                      "id": { "type":"string" },
+                      "admin": { "type":"boolean" },
+                      "name": { "type":"string" },
+                      "email": { "type":"string" },
+                      "created_at": { "type":"string" },
+                      "updated_at":{ "type":"string" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404":{
+            "description":"User not exists."
+          }
+        }
+      }
+    }
   }
+
 }
