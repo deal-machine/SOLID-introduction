@@ -1,0 +1,13 @@
+{
+  "openapi":"3.0.0",
+  "info": {
+    "title":"Users API",
+    "description":"An API made with Typescript",
+    "version": "1.0.0",
+    "contact":{
+      "name":"deal-machine",
+      "email":"95deal@gmail.com",
+      "url":"https://github.com/deal-machine"
+    }
+  }
+}
